@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <link rel="stylesheet" href="static\stylesheet.css">
+    <title>create Document</title>
+</head>
+<body>
+    <div class="container">
+        <div class="left">
+            <h1>CREATE A HOMEWORK DOCUMENT</h1>
+        </div>
+        <form action="{{ url_for('get_info') }}" method="POST">
+            {{ form.csrf_token }}
+            <label for="name" >Estudiante</label>
+            <input type="text" name="name" id="name" required>
+
+            <label for="id" >Matricula</label>
+            <input type="text" name="id" id="id" required>
+
+            <label for="assignature" >Clase</label>
+            <input type="text" name="assignature" id="assignature" required> 
+
+            <label for="professor" >Profesor</label>
+            <input type="text" name="professor" id="professor" required>
+
+            <label for="module">Modulo</label>
+            <input type="text" name="module" id="module" required>
+
+            <label for="activity">Actividad</label>
+            <input type="text" name="activity" id="activity" required>
+
+            <button type="Submit" value="Submit">create</button>
+        </form>
+        <div>
+            {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                    {% for category, message in messages %}
+                        <div class="alert alert-{{category}}">
+                            {{message}}
+                        </div>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+        </div>
+    </div>
+    
+</body>
+</html>
